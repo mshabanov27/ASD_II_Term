@@ -22,6 +22,6 @@ goal = 14
 graph = Graph(matrix)
 
 max_flow_value = graph.Edmonds_Karp(source, goal)
-for i, path in enumerate(max_flow_value[0]):
-    print(f'{path}  flow: {max_flow_value[1][i]}')
-print(max_flow_value[2])
+for path in max_flow_value[0]:
+    print(path)
+print(max_flow_value[1])
