@@ -6,14 +6,12 @@ class Graph:
     def Edmonds_Karp(self, source, goal):
         max_flow = 0
         paths = []
-        flows = []
         current_path = self.BFS(source, goal)
         while current_path is not None:
             paths.append(current_path[0])
-            max_flow += current_path[2]
-            flows.append(current_path[1])
+            max_flow += current_path[1]
             current_path = self.BFS(source, goal)
-        return paths, flows, max_flow
+        return paths, max_flow
 
     def BFS(self, source, goal):
         queue = [source]
@@ -43,7 +41,7 @@ class Graph:
             current = came_from[current]
             path.append(current)
         path.reverse()
-        return path, current_flow, current_flow
+        return path, current_flow
 
     def __find_bottleneck(self, came_from, start, goal):
         bottleneck = self.__flow_matrix[came_from[goal]][goal]
